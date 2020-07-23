@@ -7,7 +7,7 @@ This test is designed for us to understand your comfort level in using React JS,
 #Create a simple theme with styled-components.
 (https://www.styled-components.com/) to styling for HTML element. How you style the app is up to you. All styles must be done with styled-components.
 
-#Create an epic to fetch a list of characters from the API using the API documentation and store the results in your redux store. The epic should dispatch a success or failure message on completion.
+#Create an epic (see https://redux-observable.js.org/) to fetch a list of characters from the API using the API documentation and store the results in your redux store. The epic should dispatch a success or failure message on completion.
 
 #Using a selector (https://github.com/reduxjs/reselect), create an input field which allows the user to filter characters by their name and display filtered results.
 

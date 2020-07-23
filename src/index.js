@@ -1,17 +1,20 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import { Provider } from "react-redux";
-import { createStore, applyMiddleware } from "redux";
-import rootReducer from "./reducers";
+import { ConnectedRouter } from "connected-react-router";
+import configureStore, { history } from "./store/configureStore";
 import App from "./App";
 import * as serviceWorker from "./serviceWorker";
 
-const createStoreWithMiddleware = applyMiddleware()(createStore);
+const initialState = {};
+const store = configureStore(initialState, history);
 
 ReactDOM.render(
   <React.StrictMode>
-    <Provider store={createStoreWithMiddleware(rootReducer)}>
-      <App />
+    <Provider store={store}>
+      <ConnectedRouter history={history}>
+        <App />
+      </ConnectedRouter>
     </Provider>
   </React.StrictMode>,
   document.getElementById("root")

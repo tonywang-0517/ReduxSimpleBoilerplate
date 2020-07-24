@@ -15,7 +15,7 @@ This test is designed for us to understand your comfort level in using React JS,
 
 #When the user clicks on a character, create an epic to query the character by their id and store the data in your redux store.
 
-#Create a new route to display a list of character attributes. Style this however you like.
+#Create a new route (see https://github.com/supasate/connected-react-router) to display a list of character attributes. Style this however you like.
 
 ## Available Scripts
 

@@ -5,7 +5,7 @@ This test is designed for us to understand your comfort level in using React JS,
 #Use the api https://the-one-api.herokuapp.com/documentation with the provided access token. (or create your own - https://the-one-api.herokuapp.com/sign-up)
 
 #Create a simple theme with styled-components.
-(https://www.styled-components.com/) to styling for HTML element. How you style the app is up to you. All styles must be done with styled-components.
+(https://www.styled-components.com/) to style HTML element. How you style the app is up to you. All styles must be done with styled-components.
 
 #Create an epic (see https://redux-observable.js.org/) to fetch a list of characters from the API using the API documentation and store the results in your redux store. The epic should dispatch a success or failure message on completion.
 

@@ -21,7 +21,7 @@ This test is designed for us to understand your comfort level in using React JS,
 
 In the project directory, you can run:
 
-### `git clone https://github.com/LaurieWilliamsNZ/ReduxSimpleBoilerplate`
+### `git clone https://github.com/wangpuyue07/ReduxSimpleBoilerplate`
 
 ### `yarn install`
 

@@ -3,29 +3,35 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@testing-library/jest-dom": "^4.2.4",
-    "@testing-library/react": "^9.3.2",
-    "@testing-library/user-event": "^7.1.2",
+    "antd": "^4.5.4",
     "connected-react-router": "^6.8.0",
-    "history": "^5.0.0",
+    "history": "4.10.1",
+    "prettier": "^2.0.5",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-redux": "^7.2.0",
     "react-redux-loading-bar": "^4.6.0",
     "react-router": "^5.2.0",
+    "react-router-dom": "^5.2.0",
     "react-router-redux": "^4.0.8",
     "react-scripts": "3.4.1",
     "redux": "^4.0.5",
     "redux-logger": "^3.0.6",
     "redux-observable": "^1.2.0",
-    "redux-persist": "^6.0.0"
+    "redux-persist": "^6.0.0",
+    "reselect": "^4.0.0",
+    "rxjs": "^6.6.2",
+    "styled-components": "^5.1.1"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "lint": "prettier -c \"src/**\"",
+    "lint:save": "prettier --write \"src/**\""
   },
+  "proxy": "https://the-one-api.herokuapp.com/",
   "eslintConfig": {
     "extends": "react-app"
   },
@@ -40,5 +46,10 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "@testing-library/jest-dom": "^5.11.3",
+    "@testing-library/react": "^10.4.8",
+    "@testing-library/user-event": "^12.1.1"
   }
 }

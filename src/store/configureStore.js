@@ -2,22 +2,27 @@
  * Create the store with asynchronously loaded reducers
  */
 
-import { createStore, applyMiddleware, compose } from 'redux';
-import { routerMiddleware } from 'react-router-redux';
-import { createBrowserHistory } from 'history';
-import logger from 'redux-logger';
-import { createEpicMiddleware } from 'redux-observable';
-import { persistStore, persistReducer } from 'redux-persist';
-import storage from 'redux-persist/lib/storage'; // defaults to localStorage for web
+import { createStore, applyMiddleware, compose } from "redux";
+import { routerMiddleware } from "connected-react-router";
+import { createBrowserHistory } from "history";
+import logger from "redux-logger";
+import { createEpicMiddleware } from "redux-observable";
+import { persistStore, persistReducer } from "redux-persist";
+import storage from "redux-persist/lib/storage"; // defaults to localStorage for web
 
-import { loadingBarMiddleware } from 'react-redux-loading-bar';
-import rootReducer from '../reducers/index';
-import rootEpic from '../epics/index';
+import { loadingBarMiddleware } from "react-redux-loading-bar";
+import rootReducer from "../reducers/index.reducer";
+import rootEpic from "../epics/index.epic";
+import {
+  ROUTER,
+  LOADING_BAR,
+  LOCAL_CHARACTERS_FILTER,
+} from "../constants/reducersNames.constant";
 
 const persistConfig = {
-  key: 'root',
+  key: "root",
   storage,
-  blacklist: ['router', 'browser'],
+  blacklist: [ROUTER, LOADING_BAR, LOCAL_CHARACTERS_FILTER],
   debug: true,
 };
 
@@ -33,12 +38,11 @@ export default function configureStore(initialState = {}, history) {
     epicMiddleware,
     routerMiddleware(history),
     loadingBarMiddleware({
-      promiseTypeSuffixes: ['REQUEST', 'SUCCESS', 'FAILURE'],
+      promiseTypeSuffixes: ["REQUEST", "SUCCESS", "ERROR"],
     }),
   ];
 
   if (process.env.NODE_ENV === `development`) {
-    const { logger } = require(`redux-logger`);
     middlewares.push(logger);
   }
 
@@ -47,8 +51,8 @@ export default function configureStore(initialState = {}, history) {
   // If Redux DevTools Extension is installed use it, otherwise use Redux compose
   /* eslint-disable no-underscore-dangle */
   const composeEnhancers =
-    process.env.NODE_ENV !== 'production' &&
-    typeof window === 'object' &&
+    process.env.NODE_ENV !== "production" &&
+    typeof window === "object" &&
     window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__
       ? window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__
       : compose;
@@ -66,8 +70,10 @@ export default function configureStore(initialState = {}, history) {
   // Make reducers hot reloadable, see http://mxs.is/googmo
   /* istanbul ignore next */
   if (module.hot) {
-    module.hot.accept('../reducers', () => {
-      rootReducer.store.replaceReducer(require('../reducers').default());
+    module.hot.accept("../reducers/index.reducer", () => {
+      rootReducer.store.replaceReducer(
+        require("../reducers/index.reducer").default()
+      );
     });
   }
 

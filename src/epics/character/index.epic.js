@@ -23,7 +23,11 @@ function fetchAllCharactersEpic(action$) {
         url: `${API_DOMAIN}/v1/character`,
         method: "GET",
       }).pipe(
-        map((data) => data.response.docs),
+        map(({response}) => {
+          if(!response.docs)
+            throw response;
+          return response.docs;
+        }),
         mergeMap((characters) => [
           addCharacter(
             Object.fromEntries(characters.map((item) => [item._id, item]))
